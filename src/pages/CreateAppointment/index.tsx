@@ -1,6 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Feather';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import {
@@ -87,6 +88,13 @@ const CreateAppointment: React.FC = () => {
                     )}
                 ></ProvidersList>
             </ProvidersListContainer>
+
+            <DateTimePicker
+                mode="date"
+                is24Hour
+                display="calendar"
+                value={new Date()}
+            />
         </Container>
     );
 };
