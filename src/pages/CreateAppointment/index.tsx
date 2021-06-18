@@ -89,12 +89,7 @@ const CreateAppointment: React.FC = () => {
                 ></ProvidersList>
             </ProvidersListContainer>
 
-            <DateTimePicker
-                mode="date"
-                is24Hour
-                display="calendar"
-                value={new Date()}
-            />
+            <DateTimePicker value={new Date()} />
         </Container>
     );
 };
