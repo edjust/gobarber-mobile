@@ -15,6 +15,8 @@ import {
     ProviderContainer,
     ProviderAvatar,
     ProviderName,
+    Calendar,
+    Title,
 } from './styles';
 
 interface RouteParams {
@@ -34,6 +36,7 @@ const CreateAppointment: React.FC = () => {
 
     const routeParams = route.params as RouteParams;
 
+    const [showDatePicker, setShowDatePicker] = useState(false);
     const [providers, setProviders] = useState<Provider[]>([]);
     const [selectedProvider, setSelectedProvider] = useState(
         routeParams.providerId,
@@ -89,7 +92,18 @@ const CreateAppointment: React.FC = () => {
                 ></ProvidersList>
             </ProvidersListContainer>
 
-            <DateTimePicker value={new Date()} />
+            <Calendar>
+                <Title>Escolha a data</Title>
+
+                {showDatePicker && (
+                    <DateTimePicker
+                        mode="date"
+                        display="spinner"
+                        textColor="#f4ede8"
+                        value={new Date()}
+                    />
+                )}
+            </Calendar>
         </Container>
     );
 };
