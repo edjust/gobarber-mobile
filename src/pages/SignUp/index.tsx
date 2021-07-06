@@ -68,8 +68,8 @@ const SignUp: React.FC = () => {
                 }
 
                 Alert.alert(
-                    'Cadastro realizado',
-                    'Você jà pode fazer logon no GoBarber!',
+                    'Erro no cadastro',
+                    'Ocorreu um erro ao fazer o cadastro, tente novamente',
                 );
             }
         },
