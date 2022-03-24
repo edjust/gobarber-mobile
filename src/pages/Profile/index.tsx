@@ -37,7 +37,7 @@ interface ProfileFormData {
 
 const Profile: React.FC = () => {
     const navigation = useNavigation();
-    const { user, updateUser } = useAuth();
+    const { user, updateUser, signOut } = useAuth();
 
     const formRef = useRef<FormHandles>(null);
     const emailInputRef = useRef<TextInput>(null);
@@ -58,13 +58,13 @@ const Profile: React.FC = () => {
                         .email('Digite um e-mail válido'),
                     old_password: Yup.string(),
                     password: Yup.string().when('old_password', {
-                        is: (val: string) => !!val.length,
+                        is: (val: string) => !!val?.length,
                         then: Yup.string().required('Campo obrigatório'),
                         otherwise: Yup.string(),
                     }),
                     password_confirmation: Yup.string()
                         .when('old_password', {
-                            is: (val: string) => !!val.length,
+                            is: (val: string) => !!val?.length,
                             then: Yup.string().required('Campo obrigatório'),
                             otherwise: Yup.string(),
                         })
@@ -269,6 +269,8 @@ const Profile: React.FC = () => {
                             >
                                 Confirmar mudanças
                             </Button>
+
+                            <Button onPress={() => signOut()}>Sair</Button>
                         </Form>
                     </Container>
                 </ScrollView>
